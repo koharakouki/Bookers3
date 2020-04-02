@@ -6,6 +6,7 @@ before_action :correct_user, only: [:edit, :update]
     @book = Book.new
   	@b = Book.find(params[:id])
     @user = User.find(@b.user.id)
+    @book_comment = BookComment.new
   end
 
   def index
@@ -35,9 +36,9 @@ before_action :correct_user, only: [:edit, :update]
   	end
   end
 
-  def delete
+  def destroy
   	@book = Book.find(params[:id])
-  	@book.destoy
+  	@book.delete
   	redirect_to books_path, notice: "successfully delete book!"
   end
 
