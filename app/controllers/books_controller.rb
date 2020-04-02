@@ -3,10 +3,9 @@ before_action :authenticate_user!
 before_action :correct_user, only: [:edit, :update]
 
   def show
-    @book = Book.new
-  	@b = Book.find(params[:id])
-    @user = User.find(@b.user.id)
+  	@book = Book.find(params[:id])
     @book_comment = BookComment.new
+    @book_comments = @book.book_comments
   end
 
   def index
