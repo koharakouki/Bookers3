@@ -11,10 +11,12 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
+    <%= render 'layouts/search' %>
+    <div class="container main">
       <p id="notice"><%= notice %></p>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

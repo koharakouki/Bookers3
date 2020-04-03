@@ -14,6 +14,7 @@
 
 	<div class="col-xs-9">
 		<h2>Books index</h2>
+		<% if @dates.any? %>
 		<!--books一覧 -->
 		<table class="table table-hover table-inverse">
 			<thead>
@@ -27,7 +28,7 @@
 			</thead>
 
 			<tbody>
-				<% @books.each do |book| %>
+				<% @dates.each do |book| %>
 				<tr>
 					<td>
 						<%= link_to(book.user) do %>
@@ -49,7 +50,9 @@
 				<% end %>
 			</tbody>
 		</table>
-
+		<% else %>
+			<p>検索結果はありませんでした。</p>
+		<% end %>
 		<!--books一覧 -->
 	</div>
 </div>
