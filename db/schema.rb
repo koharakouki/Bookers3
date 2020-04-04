@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_154113) do
     t.string "profile_image_id"
     t.string "street"
     t.integer "postcode"
-    t.integer "prefecture_code"
+    t.string "prefecture_code"
     t.string "city"
     t.string "address_street"
     t.string "building"
