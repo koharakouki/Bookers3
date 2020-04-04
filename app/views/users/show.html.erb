@@ -43,6 +43,22 @@
 			</tbody>
 		</table>
 	</div>
+
+	<% if @user == current_user %>
+		<div class="col-xs-12">
+			<h2>Your Map</h2>
+			<div id="map"></div>
+		</div>
+	<% end %>
+<script>
+function initMap(){
+  let map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: -34.397, lng: 150.644},
+  zoom: 8
+  });
+}
+</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['KEY'] %>&callback=initMap" async defer></script>
 </div>
 <!--books一覧 -->
 

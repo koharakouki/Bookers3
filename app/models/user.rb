@@ -22,6 +22,8 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships
+  include JpPrefecture
+  jp_prefecture :prefecture_code, method_name: :prefz
 
   def follow(other_user)
     following << other_user
@@ -37,6 +39,14 @@ class User < ApplicationRecord
 
   def followers?(other_user)
     followers.include?(other_user)
+  end
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
 end
