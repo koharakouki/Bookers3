@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
+
   def search
   	@book = Book.new
   	@content = params[:content]
