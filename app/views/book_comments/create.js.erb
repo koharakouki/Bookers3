@@ -1,0 +1,2 @@
+// $('input[type="text"]').val("");
+$('#comment-box').html("<%= j(render partial: 'books/comment_and_form', locals: { book_comments: @book_comments, book: @book, book_comment: BookComment.new }) %>");

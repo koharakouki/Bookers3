@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get 'home/about', to: 'home#about'
   resources :relationships, only: [:create, :destroy]
   get '/search', to: 'search#search'
+
+  get '/books/:book_id/book_comments', to: 'book_comments#create'
 end
