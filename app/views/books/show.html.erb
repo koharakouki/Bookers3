@@ -13,7 +13,7 @@
 	<div class="col-xs-9">
 		<h2>Book detail</h2>
 
-		<%= render 'books/show', book: @book %>
+		<%= render 'books/detail', book: @book %>
 
 		<div id="comment-box">
 			<%= render partial: 'books/comment_and_form', locals: { book_comments: @book_comments, book: @book, book_comment: @book_comment } %>

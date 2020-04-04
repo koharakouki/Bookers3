@@ -1,11 +1,9 @@
 <table>
-	<div id="book_comment">
-      <div class="table">
-      <% book_comments.each do |book_comment| %>
-	        <%= render 'book_comments/book_comment_index', book_comment: book_comment %>
-		  </div>
-      <% end %>
+  <div class="table">
+  <% book_comments.each do |book_comment| %>
+      <%= render 'book_comments/book_comment_index', book_comment: book_comment %>
   </div>
+  <% end %>
 </table>
 
 <div class="comment-form">
