@@ -2,7 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable,:validatable
+         :recoverable, :rememberable, :trackable, :validatable
+
+  after_create :send_welcome_mail
 
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -47,6 +49,10 @@ class User < ApplicationRecord
 
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  def send_welcome_mail
+    ThanksMailer.welcome_mail(self).deliver
   end
 
 end
