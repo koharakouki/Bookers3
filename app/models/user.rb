@@ -24,6 +24,9 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships
+
+  has_many :chats, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
   include JpPrefecture
   jp_prefecture :prefecture_code, method_name: :prefz
 

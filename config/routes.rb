@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get '/search', to: 'search#search'
 
   get '/books/:book_id/book_comments', to: 'book_comments#create'
+
+  resources :rooms, only: [:create, :show]
+  resources :chats, only: [:create]
 end
