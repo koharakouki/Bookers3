@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   has_many :chats, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
+  has_many :rooms, through: :user_rooms
 
   def follow(other_user)
     following << other_user
@@ -56,6 +57,10 @@ class User < ApplicationRecord
 
   def send_welcome_mail
     ThanksMailer.welcome_mail(self).deliver
+  end
+
+  def remember_me
+    true
   end
 
 end
