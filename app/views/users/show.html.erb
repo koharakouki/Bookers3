@@ -4,19 +4,6 @@
 		<%= render 'users/profile', user: @user %>
 		<!--同コントローラーのviewで表示ならusersは省略可 -->
 
-		<% if @user.id != current_user.id %>
-			<% if @isRoom == true %>
-				<P><a href="/rooms/<%= @roomId %>">チャットへ</a></P>
-			<% else %>
-				<%= form_for @room do |f| %>
-			      <%= fields_for @user_room do |e| %>
-			        <%= e.hidden_field :user_id, :value=> @user.id %>
-			      <% end %>
-			      <%= f.submit "チャットを始める" %>
-			    <% end %>
-			<% end %>
-		<% end %>
-
 		<h2>New book</h2>
 		<%= render 'books/newform', book: @book %>
 	</div>
@@ -62,7 +49,7 @@
 			<h2>Your Map</h2>
   <div id='map' class="<%= @user.prefecture_code + @user.city + @user.address_street %>"></div>
 		</div>
-	<% end %>
+
 
 <script>
 /*
@@ -105,6 +92,7 @@ function codeAddress(){
 }
 </script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['KEY'] %>&callback=initMap" async defer></script>
+	<% end %>
 </div>
 <!--books一覧 -->
 

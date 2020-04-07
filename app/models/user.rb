@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+   include JpPrefecture
+  jp_prefecture :prefecture_code, method_name: :prefz
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -27,8 +29,7 @@ class User < ApplicationRecord
 
   has_many :chats, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
-  include JpPrefecture
-  jp_prefecture :prefecture_code, method_name: :prefz
+  has_many :rooms, through: :user_rooms
 
   def follow(other_user)
     following << other_user
@@ -56,6 +57,10 @@ class User < ApplicationRecord
 
   def send_welcome_mail
     ThanksMailer.welcome_mail(self).deliver
+  end
+
+  def remember_me
+    true
   end
 
 end
