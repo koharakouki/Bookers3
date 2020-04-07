@@ -4,5 +4,9 @@
 	<%= render @chats %>
 </div>
 
-<input type="text" id="chat-input">
-<button id="button">送信</button>
+<%= form_for @chat do |f| %>
+  <%= f.text_field :content, :size => 70 %>
+  <%= f.hidden_field :room_id, :value => @room.id %>
+  <br>
+  <%= f.submit "投稿する" %>
+<% end %>
