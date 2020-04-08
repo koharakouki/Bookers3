@@ -82,3 +82,5 @@ gem "jp_prefecture"
 gem 'dotenv-rails'
 
 gem 'geocoder'
+
+gem 'pry-rails'

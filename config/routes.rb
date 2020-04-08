@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   get '/books/:book_id/book_comments', to: 'book_comments#create'
 
-  resources :chats, only: [:create, :show]
+  resources :chats, only: [:show]
+    mount ActionCable.server => '/cable'
+
 end
