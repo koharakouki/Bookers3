@@ -14,19 +14,19 @@ class ChatsController < ApplicationController
 	  	UserRoom.create(user_id: @user.id, room_id: @room_id)
 	  end
 	  @chats = @room.chats
-	  @chat = Chat.new(room_id: @room.id)
+	  # @chat = Chat.new(room_id: @room.id)
 	end
 
-	def create
-		@chat = current_user.chats.new(chat_params)
-		@chat.save
-	end
+	# def create
+	# 	@chat = current_user.chats.new(chat_params)
+	# 	@chat.save
+	# end
 
 
-	private
-	def chat_params
-		params.require(:chat).permit(:content, :room_id)
-	end
+	# private
+	# def chat_params
+	# 	params.require(:chat).permit(:content, :room_id)
+	# end
 
 
 end
