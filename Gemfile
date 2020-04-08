@@ -84,3 +84,5 @@ gem 'dotenv-rails'
 gem 'geocoder'
 
 gem 'pry-rails'
+
+gem 'whenever', require: false
