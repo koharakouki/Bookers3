@@ -38,6 +38,11 @@
     render 'follower_user'
   end
 
+  def send_to_all
+    users = User.all
+    DailyMailer.everyday_mail(users).deliver
+  end
+
   private
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image)
