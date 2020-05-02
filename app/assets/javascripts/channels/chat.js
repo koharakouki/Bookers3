@@ -16,7 +16,7 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
 
 
   speak: function(content, room_id) {
-    return this.perform('speak', { content: content, room_id: room_id});
+    return this.perform('speak', { content: content, room_id: room_id });
   }
 });
 

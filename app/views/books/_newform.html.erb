@@ -9,7 +9,31 @@
 		<%= f.text_area :body, class: "col-xs-12 book_body" %>
 	</div>
 
+	<div class="field" id="star">
+            <%= f.label :rate %>
+            <%= f.hidden_field :rate, id: :review_star %>
+	</div>
+
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>
 <% end %>
+
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf : '<%= asset_path('star-half.png') %>',
+  scoreName: 'book[rate]',
+  harf: true,
+});
+ // $('#star').raty({
+ //   size: 36,
+ //   starOff: "#{asset_path('star-off.png')}",
+ //   starOn: "#{asset_path('star-on.png')}",
+ //   starHalf: "#{asset_path('star-half.png')}",
+ //   scoreName: 'review[rate]', # reviewカラムに保存するので忘れないように
+ //   half: true, # ★の半分の入力を行う
+ // });
+</script>
